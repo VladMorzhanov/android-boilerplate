@@ -1,3 +1,4 @@
-<resources>
-    <string name="app_name">Android Boilerplate</string>
+﻿<resources>
+    <string name="app_name" translatable="false">Android Boilerplate</string>
+    <string name="app.package.name" translatable="false">com.morzhanov.boilerplate</string>
 </resources>

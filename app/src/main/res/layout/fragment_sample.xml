@@ -1,0 +1,23 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mevics.dev.ui.main.dashboard.DashboardFragment">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.mevics.dev.ui.main.dashboard.DashboardViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <view
+            android:id="@+id/spineView"
+            class="com.mevics.dev.ui.main.dashboard.SpineView"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center_horizontal" />
+    </FrameLayout>
+</layout>
