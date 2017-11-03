@@ -3,7 +3,6 @@ package com.morzhanov.boilerplate.ui.main;
 import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
 import com.morzhanov.boilerplate.data.RepositoryProvider;
-import com.morzhanov.boilerplate.device.MevicsDeviceManager;
 import com.morzhanov.boilerplate.di.ViewModelProviderFactory;
 import dagger.Module;
 import dagger.Provides;
@@ -17,7 +16,7 @@ public class MainActivityModule {
     }
 
     @Provides
-    MainViewModel provideViewModel(Application application, RepositoryProvider pro, MevicsDeviceManager manager) {
-        return new MainViewModel(application, pro, manager);
+    MainViewModel provideViewModel(Application application, RepositoryProvider pro) {
+        return new MainViewModel(application, pro);
     }
 }

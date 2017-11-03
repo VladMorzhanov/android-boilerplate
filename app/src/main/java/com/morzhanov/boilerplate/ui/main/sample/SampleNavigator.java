@@ -5,6 +5,6 @@ import com.morzhanov.boilerplate.ui.base.BaseNavigator;
 
 public interface SampleNavigator extends BaseNavigator {
 
-    void redrawSpine(boolean state);
+    void sampleCall();
 }
 

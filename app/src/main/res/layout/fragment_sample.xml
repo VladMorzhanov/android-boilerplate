@@ -6,18 +6,19 @@
 
         <variable
             name="ViewModel"
-            type="com.mevics.dev.ui.main.dashboard.DashboardViewModel" />
+            type="com.morzhanov.boilerplate.ui.main.sample.SampleViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <view
-            android:id="@+id/spineView"
-            class="com.mevics.dev.ui.main.dashboard.SpineView"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom|center_horizontal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="@{() -> ViewModel.onTextClicked()}"
+            android:text="Sample Fragment"
+            android:textSize="32sp" />
     </FrameLayout>
 </layout>

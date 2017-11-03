@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 import dagger.android.AndroidInjection;
 import javax.annotation.Nullable;
@@ -38,6 +40,12 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mViewModel.setNavigator(this);
+    }
+
+    @Override
     protected void onDestroy() {
         mViewModel.onDestroyView();
         super.onDestroy();
@@ -49,6 +57,8 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
      * @return variable id
      */
     public abstract int getBindingVariable();
+
+    public abstract FrameLayout getFragmentContainer();
 
     /**
      * @return layout resource id
@@ -114,6 +124,19 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
 
     public void performDependencyInjection() {
         AndroidInjection.inject(this);
+    }
+
+    @Override
+    public void replaceFragment(Fragment fragment, boolean addToBackstack) {
+        getFragmentContainer().removeAllViewsInLayout();
+        mCurrentFragmentClass = fragment.getClass();
+        mCurrentFragment = fragment;
+        FragmentTransaction mTransaction = getSupportFragmentManager().beginTransaction()
+                .replace(R.id.mainFragmentContainer, fragment);
+        if (addToBackstack) {
+            mTransaction.addToBackStack(null);
+        }
+        mTransaction.commit();
     }
 
     @Override
