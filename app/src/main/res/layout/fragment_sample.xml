@@ -19,6 +19,8 @@
             android:layout_gravity="center"
             android:onClick="@{() -> ViewModel.onTextClicked()}"
             android:text="Sample Fragment"
-            android:textSize="32sp" />
+            android:textColor="#000"
+            android:textSize="32sp"
+            android:textStyle="bold" />
     </FrameLayout>
 </layout>

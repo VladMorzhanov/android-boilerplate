@@ -19,7 +19,6 @@ package com.morzhanov.boilerplate.ui.base;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Build;
@@ -31,7 +30,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import dagger.android.support.AndroidSupportInjection;
 
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment
@@ -143,50 +141,39 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     @Override
     @TargetApi(Build.VERSION_CODES.M)
     public boolean hasPermission(String permission) {
-        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-                getActivity().checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+        return getBaseActivity().hasPermission(permission);
     }
 
     @Override
     public void hideKeyboard() {
-        if (mActivity != null) {
-            mActivity.hideKeyboard();
-        }
+        getBaseActivity().hideKeyboard();
     }
 
     @Override
     public void invokeIntent(@Nullable Intent intent, @Nullable final Bundle b, @Nullable final Class<?> c,
             final boolean forResult, final int requestCode) {
-        if (intent == null) {
-            intent = new Intent(getActivity(), c);
-        }
-        if (b != null) {
-            intent.putExtras(b);
-        }
-        if (forResult) {
-            startActivityForResult(intent, requestCode);
-        } else {
-            startActivity(intent);
-            getActivity().finish();
-        }
+        getBaseActivity().invokeIntent(intent, b, c, forResult, requestCode);
+    }
+
+    @Override
+    public void replaceFragment(final Fragment fragment, final boolean addToBackStack) {
+        getBaseActivity().replaceFragment(fragment, addToBackStack);
     }
 
     @Override
     @TargetApi(Build.VERSION_CODES.M)
     public void requestPermissionsSafely(String[] permissions, int requestCode) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(permissions, requestCode);
-        }
+        getBaseActivity().requestPermissionsSafely(permissions, requestCode);
     }
 
     @Override
     public void showDialogFragment(@Nullable final DialogFragment fragment, @Nullable final String tag) {
-        fragment.show(getActivity().getSupportFragmentManager(), tag);
+        getBaseActivity().showDialogFragment(fragment, tag);
     }
 
     @Override
     public void showToast(final String message) {
-        getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show());
+        getBaseActivity().showToast(message);
     }
 
     private void performDependencyInjection() {

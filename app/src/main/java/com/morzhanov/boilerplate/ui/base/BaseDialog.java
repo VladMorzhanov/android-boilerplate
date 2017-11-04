@@ -90,8 +90,7 @@ public abstract class BaseDialog extends DialogFragment {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
         }
-        dialog.setCanceledOnTouchOutside(false);
-
+        dialog.setCanceledOnTouchOutside(true);
         return dialog;
     }
 

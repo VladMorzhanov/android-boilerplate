@@ -2,6 +2,7 @@ package com.morzhanov.boilerplate.ui.main;
 
 import android.app.Application;
 import com.morzhanov.boilerplate.data.RepositoryProvider;
+import com.morzhanov.boilerplate.ui.base.BaseDialogCallback;
 import com.morzhanov.boilerplate.ui.base.BaseViewModel;
 import com.morzhanov.boilerplate.ui.main.sample.SampleDialog;
 
@@ -15,7 +16,19 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
     }
 
     public void onDialogClicked() {
-        getNavigator().showDialogFragment(SampleDialog.newInstance(
-                res -> getNavigator().showToast("Dialog closed")), "SampleDialog");
+        BaseDialogCallback callback = res -> {
+            switch (res) {
+                case BaseDialogCallback.RESULT_POSITIVE:
+                    getNavigator().showToast("Positive");
+                    break;
+                case BaseDialogCallback.RESULT_NEGATIVE:
+                    getNavigator().showToast("Negative");
+                    break;
+                case BaseDialogCallback.RESULT_CANCELED:
+                    getNavigator().showToast("Canceled");
+                    break;
+            }
+        };
+        getNavigator().showDialogFragment(SampleDialog.newInstance(callback), "SampleDialog");
     }
 }

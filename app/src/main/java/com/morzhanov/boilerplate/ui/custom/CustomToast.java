@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.morzhanov.boilerplate.R;
 
 /**
  * Class to create customized Mevics Toast message
@@ -16,7 +17,7 @@ public class CustomToast {
         LayoutInflater inflater = context.getLayoutInflater();
         // Inflate the Layout
         //// TODO: 10/6/17 try to use databinding if needed
-        View layout = inflater.inflate(R.layout.mevics_toast,
+        View layout = inflater.inflate(R.layout.custom_toast,
                 context.findViewById(R.id.custom_toast_layout));
 
         //// TODO: 10/6/17 try to use databinding if needed

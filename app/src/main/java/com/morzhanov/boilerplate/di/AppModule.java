@@ -66,11 +66,7 @@ public class AppModule {
 
     @Provides
     public RepositoryProvider provideRepositoryProvider(NotificationManager manager) {
-        return new RepositoryProvider(new AuthRepository(),
-                new DeviceRepository(),
-                new SettingsRepository(manager),
-                new StatsRepository(),
-                new UserRepository());
+        return new RepositoryProvider(new UserRepository());
     }
 
     @Provides

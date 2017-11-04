@@ -1,6 +1,7 @@
 package com.morzhanov.boilerplate.di;
 
 import com.morzhanov.boilerplate.App;
+import com.morzhanov.boilerplate.data.source.DaggerDataSourceComponent;
 import com.morzhanov.boilerplate.data.source.DataSourceComponent;
 import com.morzhanov.boilerplate.data.source.DataSourceModule;
 

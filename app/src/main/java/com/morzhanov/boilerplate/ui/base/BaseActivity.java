@@ -17,6 +17,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+import com.morzhanov.boilerplate.R;
+import com.morzhanov.boilerplate.ui.custom.CustomToast;
 import dagger.android.AndroidInjection;
 import javax.annotation.Nullable;
 
@@ -158,7 +160,7 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
 
     @Override
     public void showToast(@Nullable final String message) {
-        runOnUiThread(() -> Toast.makeText(BaseActivity.this, message, Toast.LENGTH_LONG).show());
+        runOnUiThread(() -> CustomToast.makeText(BaseActivity.this, message, Toast.LENGTH_LONG).show());
     }
 
     private void performDataBinding() {
