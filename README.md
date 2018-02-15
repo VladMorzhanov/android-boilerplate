@@ -17,11 +17,11 @@ Package contains BindingAdapter classes and BindingConversions class for custom 
 
 Package contain classes that implement dependency ibjection in application.
 
-** ActivityBuilder class creates Subcomponent classes for application Activities and Fragments.
-** AppComponent - application main dagger component.
-** AppModule - provides main objects for application as utils, repository provider and etc.
-** Injector class initializes and performs di in application.
-** ViewModelProviderFactory - used if the viewmodel has a parameterized constructor.
+1. ActivityBuilder class creates Subcomponent classes for application Activities and Fragments.
+2. AppComponent - application main dagger component.
+3. AppModule - provides main objects for application as utils, repository provider and etc.
+4. Injector class initializes and performs di in application.
+5. ViewModelProviderFactory - used if the viewmodel has a parameterized constructor.
 
 * notification
 
