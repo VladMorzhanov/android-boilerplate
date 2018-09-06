@@ -1,5 +1,7 @@
 # Android Boilerplate
 
+<img src="https://i.imgur.com/ohIivw6.png?1"/>
+
 ### Android Boilerplate based on MVVM architecture.
 
 ## Packages:
